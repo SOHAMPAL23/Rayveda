@@ -1,24 +1,19 @@
 {
-  "functions": {
-    "api/*.js": {
-      "runtime": "nodejs18.x"
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
     }
-  },
-  "buildCommand": "npm install",
-  "env": {
-    "MONGODB_URI": {
-      "description": "MongoDB Atlas connection string",
-      "required": true
+  ],
+  "rewrites": [
+    {
+      "src": "/api/(.*)",
+      "dest": "index.js"
     },
-    "OPENAI_API_KEY": {
-      "description": "OpenAI API key for GPT-4o-mini",
-      "required": true
-    },
-    "PORT": {
-      "default": "3000"
-    },
-    "NODE_ENV": {
-      "default": "production"
+    {
+      "src": "/(.*)",
+      "dest": "public/$1"
     }
-  }
+  ]
 }

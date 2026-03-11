@@ -15,7 +15,24 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Database initialization state
+let dbInitialized = false;
+
+// Middleware to ensure DB and tables are initialized
+app.use(async (req, res, next) => {
+  if (!dbInitialized) {
+    try {
+      await connectDB();
+      dbInitialized = true;
+    } catch (err) {
+      console.error('Initial DB connection failed:', err);
+    }
+  }
+  next();
+});
 
 // Request logging middleware
 app.use((req, res, next) => {
@@ -81,6 +98,9 @@ const startServer = async () => {
   }
 };
 
-startServer();
+// Start server if not running on Vercel
+if (!process.env.VERCEL) {
+  startServer();
+}
 
 module.exports = app;
