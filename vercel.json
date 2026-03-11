@@ -1,0 +1,24 @@
+{
+  "functions": {
+    "api/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "buildCommand": "npm install",
+  "env": {
+    "MONGODB_URI": {
+      "description": "MongoDB Atlas connection string",
+      "required": true
+    },
+    "OPENAI_API_KEY": {
+      "description": "OpenAI API key for GPT-4o-mini",
+      "required": true
+    },
+    "PORT": {
+      "default": "3000"
+    },
+    "NODE_ENV": {
+      "default": "production"
+    }
+  }
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rayeva | Sustainable AI System</title>
+    <meta name="description" content="Premium AI-powered sustainability engine for modern commerce.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="dark-theme">
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">R</span>
+                <span class="logo-text">RAYEVA</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#dashboard" class="active">Dashboard</a></li>
+                <li><a href="#categorizer">AI Categorizer</a></li>
+                <li><a href="#impact">Impact Reports</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn btn-secondary">Documentation</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <header class="hero">
+            <div class="hero-content">
+                <h1 class="gradient-text">Sustainable Commerce, <br>Powered by AI.</h1>
+                <p>Rayeva AI System automates sustainability categorization and generates high-impact reporting for
+                    eco-conscious brands.</p>
+                <div class="hero-btns">
+                    <a href="#categorizer" class="btn btn-primary">Start Categorizing</a>
+                    <a href="#impact" class="btn btn-outline">Generate Report</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="glass-card main-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">99.9%</span>
+                        <span class="stat-label">AI Accuracy</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">10k+</span>
+                        <span class="stat-label">Products Analyzed</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section id="dashboard" class="dashboard-section container">
+            <div class="section-header">
+                <h2>System Overview</h2>
+                <div id="health-badge" class="badge">
+                    <span class="status-dot"></span>
+                    System Status: <span id="status-text">Checking...</span>
+                </div>
+            </div>
+
+            <div class="grid-3">
+                <div class="glass-card feature-card">
+                    <i data-lucide="layers" class="icon-accent"></i>
+                    <h3>Smart Categorization</h3>
+                    <p>Auto-generate categories, subcategories, and tags with 0.1s latency fallback.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <i data-lucide="leaf" class="icon-accent"></i>
+                    <h3>Impact Verification</h3>
+                    <p>Quantifiable metrics for plastic savings and carbon footprint avoidance.</p>
+                </div>
+                <div class="glass-card feature-card">
+                    <i data-lucide="zap" class="icon-accent"></i>
+                    <h3>OpenAI Integrated</h3>
+                    <p>Leveraging GPT-4o-mini for efficient and cost-effective AI processing.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="categorizer" class="tool-section container">
+            <div class="tool-grid">
+                <div class="tool-input-area">
+                    <div class="glass-card main-tool">
+                        <h2>AI Auto Categorizer</h2>
+                        <form id="categorizer-form">
+                            <div class="form-group">
+                                <label for="product-name">Product Name</label>
+                                <input type="text" id="product-name" placeholder="e.g. Bamboo Toothbrush" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="product-desc">Description</label>
+                                <textarea id="product-desc" rows="4"
+                                    placeholder="e.g. Eco-friendly biodegradable toothbrush made from organic bamboo..."
+                                    required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary full-width" id="cat-submit-btn">
+                                <span>Generate Categories</span>
+                                <i data-lucide="sparkles"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="tool-output-area">
+                    <div id="cat-result" class="glass-card result-card hidden">
+                        <div class="result-header">
+                            <h3>Analysis Result</h3>
+                            <span class="tag-id" id="res-id">#ID-0000</span>
+                        </div>
+                        <div class="result-body">
+                            <div class="res-item">
+                                <label>Category</label>
+                                <div class="value" id="res-category">Loading...</div>
+                            </div>
+                            <div class="res-item">
+                                <label>Subcategory</label>
+                                <div class="value" id="res-subcategory">Loading...</div>
+                            </div>
+                            <div class="res-item">
+                                <label>Tags</label>
+                                <div class="tags-container" id="res-tags">
+                                    <!-- Tags will appear here -->
+                                </div>
+                            </div>
+                            <div class="res-item">
+                                <label>Sustainability Filters</label>
+                                <div class="tags-container filters" id="res-filters">
+                                    <!-- Filters will appear here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cat-placeholder" class="placeholder-card">
+                        <i data-lucide="box" class="placeholder-icon"></i>
+                        <p>Fill in the product details to generate AI-driven categorization.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="impact" class="tool-section container alternate">
+            <div class="tool-grid rev">
+                <div class="tool-output-area">
+                    <div id="impact-result" class="glass-card impact-card hidden">
+                        <div class="impact-metrics-grid">
+                            <div class="impact-metric">
+                                <i data-lucide="droplet" class="blue"></i>
+                                <span class="m-value" id="res-plastic">0</span>
+                                <span class="m-label">Grams Plastic Saved</span>
+                            </div>
+                            <div class="impact-metric">
+                                <i data-lucide="cloud" class="purple"></i>
+                                <span class="m-value" id="res-carbon">0</span>
+                                <span class="m-label">KG Carbon Avoided</span>
+                            </div>
+                        </div>
+                        <div class="impact-text-area">
+                            <h4>Impact Statement</h4>
+                            <p id="res-statement">...</p>
+                        </div>
+                        <div class="impact-footer">
+                            <i data-lucide="shield-check"></i>
+                            <span id="res-sourcing">Verified Sustainability Source</span>
+                        </div>
+                    </div>
+                    <div id="impact-placeholder" class="placeholder-card">
+                        <i data-lucide="file-text" class="placeholder-icon"></i>
+                        <p>Enter order details to calculate environmental impact metrics.</p>
+                    </div>
+                </div>
+                <div class="tool-input-area">
+                    <div class="glass-card main-tool">
+                        <h2>AI Impact Reporter</h2>
+                        <form id="impact-form">
+                            <div class="form-group">
+                                <label for="impact-product">Product Name</label>
+                                <input type="text" id="impact-product" placeholder="e.g. Stainless Steel Bottle"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="impact-quantity">Quantity Sold</label>
+                                <input type="number" id="impact-quantity" value="1" min="1" required>
+                            </div>
+                            <button type="submit" class="btn btn-secondary full-width" id="impact-submit-btn">
+                                <span>Generate Report</span>
+                                <i data-lucide="file-chart-line"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <span>RAYEVA</span>
+                    <p>Empowering the green economy through intelligent automation.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Github</a>
+                    <a href="#">API Docs</a>
+                    <a href="#">Privacy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rayeva AI System. Built with &hearts; for the Planet.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

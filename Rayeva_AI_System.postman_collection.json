@@ -1,0 +1,322 @@
+{
+  "info": {
+    "_postman_id": "rayeva-ai-system-v1",
+    "name": "Rayeva AI System - Production API",
+    "description": "Production-ready API for AI-powered sustainable commerce platform. Includes Category Generator and Impact Report Generator modules.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "Get Health Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/health",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "health"
+              ]
+            },
+            "description": "Check if the Rayeva AI System is running and healthy"
+          },
+          "response": [
+            {
+              "name": "Health Check Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/api/health",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "api",
+                    "health"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\"status\":\"healthy\",\"timestamp\":\"2026-03-07T10:30:00.000Z\",\"service\":\"Rayeva AI System\",\"version\":\"1.0.0\"}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Category Generator",
+      "item": [
+        {
+          "name": "Generate Product Category",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"product_name\": \"Eco-Friendly Bamboo Toothbrush\",\"description\": \"A sustainable bamboo toothbrush with biodegradable bristles, packaged in compostable materials. Perfect for environmentally conscious consumers.\"}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/category",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "category"
+              ]
+            },
+            "description": "Generate AI-powered category, subcategory, tags, and sustainability filters for a product"
+          },
+          "response": [
+            {
+              "name": "Category Generation Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"product_name\": \"Eco-Friendly Bamboo Toothbrush\",\"description\": \"A sustainable bamboo toothbrush with biodegradable bristles, packaged in compostable materials.\"}"
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/category",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "api",
+                    "category"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{\"product_id\":\"507f1f77bcf86cd799439011\",\"product_name\":\"Eco-Friendly Bamboo Toothbrush\",\"category\":\"Personal Care\",\"subcategory\":\"Oral Care\",\"tags\":[\"eco-friendly\",\"bamboo-toothbrush\",\"biodegradable\",\"sustainable-oral-care\",\"plastic-free-toothbrush\",\"vegan-bristles\",\"compostable-packaging\",\"zero-waste-personal-care\"],\"sustainability_filters\":[\"plastic-free\",\"biodegradable\",\"vegan\",\"compostable\"],\"generated_at\":\"2026-03-07T10:30:00.000Z\"}}"
+            }
+          ]
+        },
+        {
+          "name": "Get Product Category",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/category/{{product_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "category",
+                "{{product_id}}"
+              ]
+            },
+            "description": "Retrieve category information for a specific product"
+          },
+          "response": [
+            {
+              "name": "Get Category Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/api/category/507f1f77bcf86cd799439011",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "api",
+                    "category",
+                    "507f1f77bcf86cd799439011"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{\"product_id\":\"507f1f77bcf86cd799439011\",\"product_name\":\"Eco-Friendly Bamboo Toothbrush\",\"description\":\"A sustainable bamboo toothbrush with biodegradable bristles...\",\"category\":\"Personal Care\",\"subcategory\":\"Oral Care\",\"tags\":[\"eco-friendly\",\"bamboo-toothbrush\"],\"sustainability_filters\":[\"plastic-free\",\"biodegradable\"],\"created_at\":\"2026-03-07T10:30:00.000Z\"}}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Impact Report Generator",
+      "item": [
+        {
+          "name": "Generate Impact Report",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"product\": \"Eco-Friendly Bamboo Toothbrush\",\"quantity\": 5}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/impact",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "impact"
+              ]
+            },
+            "description": "Generate AI-powered environmental impact report for an order including plastic saved, carbon avoided, and impact statements"
+          },
+          "response": [
+            {
+              "name": "Impact Report Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"product\": \"Eco-Friendly Bamboo Toothbrush\",\"quantity\": 5}"
+                },
+                "url": {
+                  "raw": "http://localhost:3000/api/impact",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "api",
+                    "impact"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{\"order_id\":\"ORD-1709880600000-abc123def\",\"product\":\"Eco-Friendly Bamboo Toothbrush\",\"quantity\":5,\"impact_metrics\":{\"plastic_saved_grams\":100,\"carbon_avoided_kg\":0.25},\"local_sourcing\":\"This product is locally manufactured in partnership with certified sustainable suppliers.\",\"impact_statement\":\"By choosing this sustainable bamboo toothbrush, you've prevented 100 grams of plastic from reaching landfills and saved 0.25 kg of CO2 emissions. This purchase eliminated 100 grams of plastic waste and prevented 0.25 kg of CO2 emissions.\",\"generated_at\":\"2026-03-07T10:30:00.000Z\"}}"
+            }
+          ]
+        },
+        {
+          "name": "Get Impact Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/impact/{{order_id}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "impact",
+                "{{order_id}}"
+              ]
+            },
+            "description": "Retrieve impact report for a specific order"
+          },
+          "response": [
+            {
+              "name": "Get Impact Report Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:3000/api/impact/ORD-1709880600000-abc123def",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "3000",
+                  "path": [
+                    "api",
+                    "impact",
+                    "ORD-1709880600000-abc123def"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\"success\":true,\"data\":{\"order_id\":\"ORD-1709880600000-abc123def\",\"quantity\":5,\"impact_metrics\":{\"plastic_saved_grams\":100,\"carbon_avoided_kg\":0.25},\"local_sourcing\":\"This product is locally manufactured...\",\"impact_statement\":\"By choosing this sustainable...\",\"status\":\"completed\",\"created_at\":\"2026-03-07T10:30:00.000Z\"}}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "product_id",
+      "value": "507f1f77bcf86cd799439011",
+      "type": "string"
+    },
+    {
+      "key": "order_id",
+      "value": "ORD-1709880600000-abc123def",
+      "type": "string"
+    }
+  ]
+}
